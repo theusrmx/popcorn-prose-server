@@ -74,8 +74,8 @@ public class AuthController {
 
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @GetMapping("/get-id")
-    public ResponseEntity<String> getIdFromToken(@RequestHeader("Authorization") String token) {
-        String id = authService.getNameFromToken(token);
+    public ResponseEntity<Object> getIdFromToken(@RequestHeader("Authorization") String token) {
+        Long id = authService.getIDFromToken(token);
 
         if (id != null) {
             return ResponseEntity.ok(id);

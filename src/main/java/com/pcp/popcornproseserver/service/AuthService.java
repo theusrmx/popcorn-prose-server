@@ -21,7 +21,7 @@ public class AuthService {
 
     public String generateToken(String email) {
         String name = usuarioRepository.findByEmail(email).getNome();
-        Long id = usuarioRepository.findByEmail(email).getID_user();
+        Long id = usuarioRepository.findByEmail(email).getIdUser();
 
         return Jwts.builder()
                 .setSubject(email)

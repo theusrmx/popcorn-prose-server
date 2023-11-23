@@ -11,7 +11,7 @@ public class Usuario {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long ID_user;
+    private Long idUser;
     private String nome;
     private String sobrenome;
     @Column(name = "data_nascimento", nullable = false)
@@ -40,12 +40,12 @@ public class Usuario {
 
     // Getters e Setters
 
-    public Long getID_user() {
-        return ID_user;
+    public Long getIdUser() {
+        return idUser;
     }
 
-    public void setID_user(Long ID_user) {
-        this.ID_user = ID_user;
+    public void setIdUser(Long idUser) {
+        this.idUser = idUser;
     }
 
     public String getNome() {
