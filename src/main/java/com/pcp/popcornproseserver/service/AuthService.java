@@ -22,11 +22,13 @@ public class AuthService {
     public String generateToken(String email) {
         String name = usuarioRepository.findByEmail(email).getNome();
         Long id = usuarioRepository.findByEmail(email).getIdUser();
+        String surname = usuarioRepository.findByEmail(email).getSobrenome();
 
         return Jwts.builder()
                 .setSubject(email)
                 .claim("id", id)
                 .claim("name", name)
+                .claim("surname", surname)
                 .setExpiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .signWith(SignatureAlgorithm.HS512, SECRET_KEY)
                 .compact();
@@ -50,5 +52,13 @@ public class AuthService {
         }
     }
 
+    public String getSurnameFromToken(String token) {
+        try {
+            Claims claims = Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
+            return claims.get("surname", String.class);
+        } catch (Exception e) {
+            return null;
+        }
+    }
 
 }
