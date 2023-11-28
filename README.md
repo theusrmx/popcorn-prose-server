@@ -1,6 +1,6 @@
 # Popcorn Prose Server
 
-O **Popcorn Prose Server** é uma API RESTful desenvolvida em Spring Boot para fornecer recursos relacionados a avaliações de filmes e séries disponivéis na API The Movie Database (TMDB).
+O **Popcorn Prose Server** é uma API RESTful desenvolvida em Spring Boot para fornecer recursos relacionados a avaliações de filmes e séries disponíveis na API The Movie Database (TMDB).
 
 ## Pré-requisitos
 - Java (versão 17 ou superior)
@@ -22,6 +22,8 @@ O **Popcorn Prose Server** é uma API RESTful desenvolvida em Spring Boot para f
     ```bash
     mvnw.cmd spring-boot:run
     ```
+
+    Ou executando o arquivo `PopcornProseServerApplication` em uma IDE.
 
 ## Uso
 A API estará acessível em [http://localhost:8080](http://localhost:8080).
