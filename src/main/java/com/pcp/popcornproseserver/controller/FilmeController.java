@@ -1,11 +1,10 @@
 package com.pcp.popcornproseserver.controller;
 
-import com.pcp.popcornproseserver.dto.FilmeDTO;
+
 import com.pcp.popcornproseserver.models.Filme;
 import com.pcp.popcornproseserver.service.AuthService;
 import com.pcp.popcornproseserver.service.FilmeService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -78,6 +77,47 @@ public class FilmeController {
             return ResponseEntity.status(500).build();
         }
     }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @PutMapping("/editReview")
+    public ResponseEntity<Map<String, String>> editReview(
+            @RequestParam Long idFilme,
+            @RequestParam Long idUser,
+            @RequestBody Filme filme
+    ) {
+        try {
+            filmeService.editReview(idFilme, idUser, filme);
+
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Revisão editada com sucesso!");
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            // Se ocorrer um erro, retorne um status de erro interno do servidor (500)
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+    @CrossOrigin(origins = "*", allowedHeaders = "*")
+    @DeleteMapping("/deleteReview")
+    public ResponseEntity<Map<String, String>> deleteReview(
+            @RequestParam Long idFilme,
+            @RequestParam Long idUser
+    ) {
+        try {
+            filmeService.deleteReview(idFilme, idUser);
+
+            Map<String, String> response = new HashMap<>();
+            response.put("message", "Review excluída com sucesso!");
+
+            return ResponseEntity.ok(response);
+        } catch (Exception e) {
+            // Se ocorrer um erro, retorne um status de erro interno do servidor (500)
+            return ResponseEntity.status(500).build();
+        }
+    }
+
+
 
 
 
