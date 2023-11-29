@@ -1,6 +1,6 @@
 package com.pcp.popcornproseserver.controller;
 
-import com.pcp.popcornproseserver.models.Filme;
+
 import com.pcp.popcornproseserver.models.Lista;
 import com.pcp.popcornproseserver.service.ListaService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,8 +21,7 @@ public class ListaController {
     @CrossOrigin(origins = "*", allowedHeaders = "*")
     @PostMapping("/adicionar")
     public ResponseEntity<Map<String, Object>> adicionarLista(
-            @RequestBody Lista lista,
-            @RequestHeader(name = "Authorization") String token) {
+            @RequestBody Lista lista) {
         try {
             // Lógica para validar o token se necessário
 
@@ -47,8 +46,7 @@ public class ListaController {
     @DeleteMapping("/deletar/{filmeId}/{userId}")
     public ResponseEntity<Map<String, Object>> deletarFilmeDaLista(
             @PathVariable Long filmeId,
-            @PathVariable Long userId,
-            @RequestHeader(name = "Authorization") String token) {
+            @PathVariable Long userId) {
         try {
             // Lógica para validar o token se necessário
 
@@ -88,8 +86,7 @@ public class ListaController {
     @GetMapping("verificar/{userId}/{filmeId}")
     public ResponseEntity<?> verificarFilme(
             @PathVariable Long userId,
-            @PathVariable Long filmeId,
-            @RequestHeader(name = "Authorization") String token) {
+            @PathVariable Long filmeId) {
         try {
             // Lógica para validar o token se necessário
             Lista filmesNaLista = listaService.verificarFilme(userId, filmeId);
